@@ -253,8 +253,7 @@ export default {
             return await localStorage.setItem("jwt", json.jwt);
           
           }
-          console.log(json);
-          alert("Wrong Credentials")
+        
         }
         
         )

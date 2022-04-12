@@ -16,8 +16,8 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5" style="padding: 26px 131px;}">
-          <form
-            @submit.prevent="submitForm()"
+          <form action="https://formspree.io/f/mnqwgdqe" method="POST" target="BLANK"
+          
           >
             <!--Grid row-->
             <div class="row">
@@ -126,34 +126,34 @@ import Footer from "../components/Footer.vue"
 export default {
     components:{Footer},
   data() {
-    return {
-      firstname: "",
-      lastname: "",
-      email: "",
-      message: "",
-    };
+    // return {
+    //   firstname: "",
+    //   lastname: "",
+    //   email: "",
+    //   message: "",
+    // };
   },
-  methods: {
-    submitForm() {
-      console.log(this.firstname, this.lastname, this.email, this.message);
-      fetch("https://lyf-styl-reservation.herokuapp.com/contact", {
-        method: "POST",
-        headers: { "Content-type": "application/json; charset=UTF-8" },
+  // methods: {
+  //   submitForm() {
+  //     console.log(this.firstname, this.lastname, this.email, this.message);
+  //     fetch("https://lyf-styl-reservation.herokuapp.com/contact", {
+  //       method: "POST",
+  //       headers: { "Content-type": "application/json; charset=UTF-8" },
 
-        body: JSON.stringify({
-          firsname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          message: this.message,
-        }),
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
-        })
-        .catch((err) => console.log(err));
-    },
-  },
+  //       body: JSON.stringify({
+  //         firsname: this.firstname,
+  //         lastname: this.lastname,
+  //         email: this.email,
+  //         message: this.message,
+  //       }),
+  //     })
+  //       .then((response) => response.json())
+  //       .then((json) => {
+  //         console.log(json);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   },
+  // },
 };
 </script>
 

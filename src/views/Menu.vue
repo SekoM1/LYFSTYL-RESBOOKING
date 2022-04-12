@@ -410,5 +410,12 @@ section#menu{
 .menu-item:hover .menu-overlay-content{
     transform: translateY(0);
 }
+.border{
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  border-bottom: 4px solid var(--grey);
+  
+}
 
 </style>

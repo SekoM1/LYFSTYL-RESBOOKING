@@ -4,10 +4,10 @@
             <div class = "card-container">
                 <div class = "card-content">
                     <h3>Reservation</h3>
-                    <form  @submit.prevent="submitForm()" >
+                    <form action="https://formspree.io/f/mnqwgdqe" method="POST" target="blank" >
                         <div class = "form-row">
                          <label  for="days">Select Day</label>
-                            <select  id = "days" v-model="days" placeholder="Select Day"> 
+                            <select  id = "days" name="days" placeholder="Select Day"> 
                                 
                                 <option value = "sunday">Sunday</option>
                                 <option value = "monday">Monday</option>
@@ -18,7 +18,7 @@
                                 <option value = "saturday">Saturday</option>
                             </select>
                          <label  for="hours">Select Hours</label>
-                            <select id = "hours" v-model="hours" input type = "text" placeholder="Select Hour">
+                            <select id = "hours" name="hours" input type = "text" placeholder="Select Hour">
                                 <!-- <option value = "hour-select">Select Hour</option> -->
                                 <option value = "10">10: 00</option>
                                 <option value = "10">12: 00</option>
@@ -31,12 +31,15 @@
                         </div>
 
                         <div class = "form-row">
-                            <input type = "text" id="fullname" v-model="firstname" placeholder="Full Name">
+                            <input type = "text" id="name" name="name" placeholder="Full Name">
                             <input type = "text" id="number" v-model="number" placeholder="Phone Number">
+                        </div>
+                        <div class = "form-row">
+                            <input type = "text" id="email" name="email" placeholder="Email">
                         </div>
 
                         <div class = "form-row">
-                            <input type = "number" id="people" v-model="people" placeholder="How Many Persons?" min = "1">
+                            <input type = "number" id="people" name="people" placeholder="How Many Persons?" min = "1">
                             <input type = "submit" value = "BOOK TABLE">
                         </div>
                     </form>
@@ -47,52 +50,52 @@
 
 <script>
 export default {
-  data() {
-    return {
-      form: false,
-      firstname:"",
-      email:localStorage.getItem("email"),
-      people:"",
-      hours: "",
-      days: "",
-      number: "",
-    }
-  },
-    mounted(){
-        if (!localStorage.getItem("jwt")) {
-            alert("User not logged in");
-            this.$router.push({
-                name:'home'
-            })          
-        }
-      },
-  methods: {
-    submitForm() {
-      fetch("https://lyf-styl-reservation.herokuapp.com/book", {
-        method: "POST",        
-        body: JSON.stringify({
-            email: this.email,
-            firstname: this.firstname,
-          people: this.people,
-          number: this.number,
-          hours: this.hours,
-          days: this.days,
-        }),
+//   data() {
+//     return {
+//       form: false,
+//       firstname:"",
+//       email:localStorage.getItem("email"),
+//       people:"",
+//       hours: "",
+//       days: "",
+//       number: "",
+//     }
+//   },
+//     mounted(){
+//         if (!localStorage.getItem("jwt")) {
+//             alert("User not logged in");
+//             this.$router.push({
+//                 name:'home'
+//             })          
+//         }
+//       },
+//   methods: {
+//     submitForm() {
+//       fetch("https://lyf-styl-reservation.herokuapp.com/book", {
+//         method: "POST",        
+//         body: JSON.stringify({
+//             email: this.email,
+//             firstname: this.firstname,
+//           people: this.people,
+//           number: this.number,
+//           hours: this.hours,
+//           days: this.days,
+//         }),
         
-        headers: { "Content-type": "application/json; charset=UTF-8", 
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
-            alert('Booking Sent!')
-        })
-        .catch((err) => console.log(err));
+//         headers: { "Content-type": "application/json; charset=UTF-8", 
+//         },
+//       })
+//         .then((response) => response.json())
+//         .then((json) => {
+//           console.log(json);
+//             alert('Booking Sent!')
+//         })
+//         .catch((err) => console.log(err));
     
-    },
-  },
+//     },
+//   },
 
-}
+ }
 </script>
 
 <style scoped>
@@ -123,7 +126,7 @@ label{
 }
 .card-content{
     background: #fff;
-    height: 330px;
+    height: 380px;
 }
 .card-content h3{
     text-align: center;
